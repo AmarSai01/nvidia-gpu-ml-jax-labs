@@ -20,8 +20,28 @@ Pathway: *Scale and Serve JAX Models on NVIDIA GPUs* — quiz passed **17/17**.
 - **Transformer:** 4-layer decoder with Flax NNX, checkpointed with Orbax, text generation with temperature sampling
 - **Serving:** `jax.jit`, AOT `lower().compile()`, portable `jax.export` artifact, TensorFlow SavedModel
 
+## GPU-Accelerated ML on NYC Taxi Data (cuDF + cuML)
+`rapids-nyc-taxi/NYC_Taxi_GPU_Acceleration.ipynb`
+
+Predicted taxi tip amounts from ~3M NYC trips on an NVIDIA T4 GPU.
+- Trained Linear Regression, Random Forest, and XGBoost with cross-validation
+- Accelerated pandas and scikit-learn with cuDF/cuML (zero code changes)
+- **Results:** XGBoost ~4.6x faster on GPU (1.0s vs 4.6s CPU); best model Random Forest, R² = 0.583
+
+**Tech:** Python, pandas, scikit-learn, XGBoost, NVIDIA RAPIDS cuDF/cuML, Google Colab (T4 GPU)
+
+## Accelerated Data Analytics with cuDF (NYC Taxi)
+`rapids-data-analytics/NYC_Taxi_Data_Analytics_GPU.ipynb`
+
+Analyzed ~9M NYC yellow taxi trips (Jan–Mar 2024) on an NVIDIA T4 GPU.
+- Compared pandas (CPU) vs cuDF (GPU) for loading, feature creation, and groupby aggregations
+- Showed Parquet is smaller and faster to read than CSV
+- Used `cudf.pandas` for zero-code-change acceleration and profiled which operations ran on GPU
+
+**Tech:** Python, pandas, NVIDIA RAPIDS cuDF, Parquet, Google Colab (T4 GPU)
+
 ## Tech stack
-Python · JAX · Flax NNX · Optax · Orbax · NVIDIA RAPIDS (cuDF, cuML) · XGBoost · scikit-learn · Google Colab (T4 GPU)
+Python · pandas · JAX · Flax NNX · Optax · Orbax · NVIDIA RAPIDS (cuDF, cuML) · XGBoost · scikit-learn · Parquet · Google Colab (T4 GPU)
 
 ## Author
 **Amareshwar Thuraka** — Final-year B.Tech CSE (Data Science), MVJ College of Engineering
